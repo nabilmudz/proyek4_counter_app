@@ -1,5 +1,5 @@
+import 'package:counter_app/features/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
-import 'counter_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 0, 255, 98),
         ),
       ),
-      home: const CounterView(),
+      home: const OnboardingView(),
     );
   }
 }

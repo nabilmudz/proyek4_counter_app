@@ -1,27 +1,76 @@
+import 'package:counter_app/features/auth/login_view.dart';
 import 'package:flutter/material.dart';
 import 'counter_controller.dart';
 
 class CounterView extends StatefulWidget {
-  const CounterView({super.key});
+  final String username;
+  const CounterView({super.key, required this.username});
   @override
   State<CounterView> createState() => _CounterViewState();
 }
 
 class _CounterViewState extends State<CounterView> {
-  final CounterController _controller = CounterController();
+  late CounterController _controller;
+  String get greeting {
+    final hour = DateTime.now().hour;
+
+    if (hour >= 6 && hour < 12) {
+      return "Selamat Pagi";
+    } else if (hour >= 12 && hour < 15) {
+      return "Selamat Siang";
+    } else if (hour >= 15 && hour < 18) {
+      return "Selamat Sore";
+    } else {
+      return "Selamat Malam";
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CounterController(widget.username);
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await _controller.loadLastValue();
+    await _controller.loadHistory();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
-        title: const Text("LogBook: Versi SRP"),
+        title: Text("LogBook: ${widget.username}"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginView()),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Center(
+              child: Text(
+                "$greeting, ${widget.username}",
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+            SizedBox(height: 60),
             Text(
               "Step: ${_controller.stepValue}",
               style: const TextStyle(fontSize: 24),
