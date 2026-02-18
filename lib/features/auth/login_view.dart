@@ -44,7 +44,9 @@ class _LoginViewState extends State<LoginView> {
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Login Gagal! Gunakan admin/123")),
+        const SnackBar(
+          content: Text("Login Gagal! Username atau password salah"),
+        ),
       );
     }
   }
