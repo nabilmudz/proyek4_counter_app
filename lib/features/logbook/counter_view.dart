@@ -1,4 +1,5 @@
 import 'package:counter_app/features/auth/login_view.dart';
+import 'package:counter_app/features/logbook/log_view.dart';
 import 'package:flutter/material.dart';
 import 'counter_controller.dart';
 
@@ -36,6 +37,15 @@ class _CounterViewState extends State<CounterView> {
     await _controller.loadLastValue();
     await _controller.loadHistory();
     setState(() {});
+  }
+
+  void _handleLogbook() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LogView(username: widget.username),
+      ),
+    );
   }
 
   @override
@@ -192,6 +202,13 @@ class _CounterViewState extends State<CounterView> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          FloatingActionButton(
+            heroTag: 'logbook',
+            onPressed: _handleLogbook,
+            backgroundColor: Colors.lightBlueAccent,
+            child: const Icon(Icons.edit_document),
+          ),
+          const SizedBox(width: 16),
           FloatingActionButton(
             heroTag: 'decrement',
             onPressed: () {

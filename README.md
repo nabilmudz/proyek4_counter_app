@@ -9,6 +9,9 @@ Saya melakukan setup flutter dengan manual (mendownload zip file), dibandingkan 
 ### Prinsip SRP
 SRP merupakan singkatan dari Single Responsibility Principle yang dimana membuat satu file atau modul hanya memiliki satu fungsi atau tanggung jawab. Dalam implementasinya kali ini SRP digunakan dalam memisahkan logic (controller) dan tampilan (view). Dimana setiap kali data berubah dari controller, view hanya menampilkannya secara realtime menggunakan setState. Dalam melakukan tugas ini saya dibantu dengan AI guna untuk memperkenalkan konsep, behavior dari flutter serta brainstorming bagaimana best practice dalam melakukan prinsip SRP ini.
 
+# Flutter Emulator
+Pakai Powershell Run:
+`flutter emulators --launch pixel6_api34 and flutter run`
 
 
 
