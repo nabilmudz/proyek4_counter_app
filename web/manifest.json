@@ -1,6 +1,6 @@
 {
-    "name": "counter_app",
-    "short_name": "counter_app",
+    "name": "logbook_app_021",
+    "short_name": "logbook_app_021",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

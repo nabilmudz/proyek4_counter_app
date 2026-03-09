@@ -1,4 +1,4 @@
-import 'package:uuid/uuid.dart';
+import 'package:mongo_dart/mongo_dart.dart';
 
 enum LogCategory {
   pekerjaan("Pekerjaan"),
@@ -17,9 +17,9 @@ enum LogCategory {
 }
 
 class LogModel {
-  final String id;
+  final ObjectId? id;
   final String title;
-  final String date;
+  final DateTime date;
   final String description;
   final LogCategory category;
 
@@ -33,19 +33,19 @@ class LogModel {
 
   factory LogModel.fromMap(Map<String, dynamic> map) {
     return LogModel(
-      id: map['id'] ?? const Uuid().v4(),
-      title: map['title'],
-      date: map['date'],
-      description: map['description'],
+      id: (map['_id'] ?? map['id']) as ObjectId?,
+      title: map['title'] ?? '',
+      date: map['date'] != null ? DateTime.parse(map['date']) : DateTime.now(),
+      description: map['description'] ?? '',
       category: LogCategory.fromString(map['category']),
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      '_id': id,
       'title': title,
-      'date': date,
+      'date': date.toIso8601String(),
       'description': description,
       'category': category.value,
     };

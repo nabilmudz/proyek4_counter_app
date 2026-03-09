@@ -1,5 +1,5 @@
-import 'package:counter_app/features/auth/login_view.dart';
-import 'package:counter_app/features/logbook/log_view.dart';
+import 'package:logbook_app_021/features/auth/login_view.dart';
+import 'package:logbook_app_021/features/logbook/log_view.dart';
 import 'package:flutter/material.dart';
 import 'counter_controller.dart';
 

@@ -1,4 +1,4 @@
-import 'package:counter_app/features/logbook/counter_view.dart';
+import 'package:logbook_app_021/features/logbook/counter_view.dart';
 import 'package:flutter/material.dart';
 import 'login_controller.dart';
 

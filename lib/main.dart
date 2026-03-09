@@ -1,7 +1,13 @@
-import 'package:counter_app/features/onboarding/onboarding_view.dart';
+import 'package:logbook_app_021/features/logbook/log_view.dart';
+// import 'package:logbook_app_021/features/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 
@@ -13,11 +19,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Logbook App',
       theme: ThemeData(
-        colorScheme: .fromSeed(
+        colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 0, 255, 98),
         ),
       ),
-      home: const OnboardingView(),
+      home: const LogView(username: "admin"),
     );
   }
 }

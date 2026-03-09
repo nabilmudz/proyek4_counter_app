@@ -1,4 +1,4 @@
-package com.example.counter_app
+package com.example.logbook_app_021
 
 import io.flutter.embedding.android.FlutterActivity
 
